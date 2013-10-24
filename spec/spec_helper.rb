@@ -16,3 +16,7 @@ RSpec.configure do |config|
 
   config.order = 'random'
 end
+
+def app
+  subject
+end
