@@ -54,5 +54,5 @@ namespace :db do
   end
  
   desc "Reset the database"
-  task :reset => g[:nuke, :migrate]
+  task :reset => [:nuke, :migrate]
 end
