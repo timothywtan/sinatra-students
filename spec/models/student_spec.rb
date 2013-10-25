@@ -1,3 +1,5 @@
+require_relative '../spec_helper'
+
 describe Student do
   context 'with slugs' do
     describe '#slugify!' do
@@ -21,8 +23,5 @@ describe Student do
         expect(Student.find_by(:slug => "avi-flombaum")).to eq(subject)
       end
     end
-
-
   end
-
 end
