@@ -178,11 +178,11 @@ The form should submit via a `POST` to `/students`, take the form data, and save
 See if you can write specs for the form. Within the `students_controller_spec.rb`, I'd imagine seeing something like.
 
 ```ruby
-context 'creating a student' do
+context 'POST /students' do
   it 'accepts the form data and creates a student with those attributes' do
     # The `post` Rack::Test method takes a second argument of a POST data hash.    
     post '/students', {:name => "Avi Flombaum"}
-    expect(Student.find_by(:name => "Avi Flombaum")).to be_a(Student)
+    expect(Student.find(:name => "Avi Flombaum")).to be_a(Student)
   end
 end
 ```

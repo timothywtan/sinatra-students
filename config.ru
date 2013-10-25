@@ -16,5 +16,7 @@ def mount_controllers_as_middleware
 end
 mount_controllers_as_middleware
 
+use Rack::Static, :root => 'public', :urls => ['/']
+
 # Mount the main controller as our Rack Application.
 run ApplicationController

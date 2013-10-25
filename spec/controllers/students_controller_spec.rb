@@ -1,16 +1,15 @@
 require_relative '../spec_helper'
 
 describe StudentsController do
-
   # Every route should be within it's own context.
-  context 'the student index' do
+  context 'GET /' do
     # student will be a new, unsaved student.
     let(:student){Student.new.tap{|s| s.name = "Flatiron Student"}}
     # As your test suite grows, you might need more sample data to correctly
     # test your controllers. For example, when testing updating a student
     # your test object (student), will have to have been saved and you'll have
     # to compare the original student to the updated student and make sure the
-    # correct updates occured. Feel free to create more test objects as you need.
+    # correct updates occurred. Feel free to create more test objects as you need.
 
     # BONUS - Use factory_girl https://github.com/thoughtbot/factory_girl
 
@@ -47,19 +46,19 @@ describe StudentsController do
     end
   end
   
-  context 'a new student' do
+  context 'GET /students/new' do
   end
   
-  context 'creating a student' do
+  context 'POST /students' do
   end
 
-  context 'the student profile' do
+  context 'GET /students/slug' do
   end
 
   # This context should only be about testing the edit form.
-  context 'editing a student' do
+  context 'GET /students/slug/edit' do
   end
 
-  context 'updating a student' do
+  context 'POST /students/slug' do
   end
 end

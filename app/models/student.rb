@@ -7,6 +7,7 @@
 # Read the methods defined:
 # http://sequel.rubyforge.org/rdoc/classes/Sequel/Model/ClassMethods.html
 # http://sequel.rubyforge.org/rdoc/classes/Sequel/Model/InstanceMethods.html 
+# http://sequel.rubyforge.org/rdoc/classes/Sequel/Dataset.html
 
 class Student < Sequel::Model
   

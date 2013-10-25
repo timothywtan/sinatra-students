@@ -10,6 +10,11 @@ task :environment do |cmd, args|
   require "./config/environment"
 end
 
+desc 'Load a pry console'
+task :console => [:environment] do
+  Pry.start
+end
+
 # IMPORTANT - READ THIS TASK!
 # This is the method in which you will initiate the scrape
 # of the student site to populate your development database. 
