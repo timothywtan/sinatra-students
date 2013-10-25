@@ -9,6 +9,7 @@ gem 'sqlite3'
 # Gems to be used only in specific environments.
 group :development, :test do
   gem 'pry'
+  gem 'nokogiri'
 end
 
 # Gems to only be used in the test environment.

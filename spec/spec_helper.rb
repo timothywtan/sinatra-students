@@ -16,7 +16,8 @@ SimpleCov.start do
   add_filter '/db/'    
   add_filter '/config/'
   add_filter '/spec/'
-  add_filter '/public'
+  add_filter '/public/'
+  add_filter '/lib/' # Feel free to write coverage for the StudentScrape
 end
 
 # Load our environment.

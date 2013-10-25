@@ -1,6 +1,9 @@
 # Originally from: 
 # https://github.com/flatiron-school/student-scraper-db-003-unit-1/blob/master/lib/models/student_scraper.rb
 
+require 'nokogiri'
+require 'open-uri'
+
 class StudentScraper
   attr_reader :main_index_url
 
