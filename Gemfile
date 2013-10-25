@@ -14,6 +14,7 @@ end
 
 # Gems to only be used in the test environment.
 group :test do
+  gem 'json'
   gem 'guard-rspec'
   gem 'simplecov'
   gem 'rspec'
