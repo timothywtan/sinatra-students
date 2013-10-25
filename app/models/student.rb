@@ -3,6 +3,11 @@
 # of this class.
 
 # http://sequel.rubyforge.org/rdoc/classes/Sequel/Model.html
+
+# Read the methods defined:
+# http://sequel.rubyforge.org/rdoc/classes/Sequel/Model/ClassMethods.html
+# http://sequel.rubyforge.org/rdoc/classes/Sequel/Model/InstanceMethods.html 
+
 class Student < Sequel::Model
   
 end

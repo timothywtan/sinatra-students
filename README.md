@@ -30,6 +30,8 @@ coverage/
 db/
   migrate/
     01_create_students.rb
+lib/
+  student_scraper.rb
 public/
 spec/
   controllers/
@@ -70,6 +72,30 @@ guard
 
 ## Running Migrations
 
+Migrations are a mechanism for creating our schema through code rather then sequel. To trigger the migration files to run, we use a rake task, defined in the `Rakefile`, `rake db:migrate`. That will apply all unapplied, or unrun, migrations to the database. There are other tasks but don't worry about them.
+
 ## Racking Up the Application
 
+Start the application with `rackup`
+
 # Objectives
+
+## Integrating a Student Scrape
+
+You need to integrate a scrape class into this project to populate your development database.
+
+We suggest using (StudentScraper)[https://github.com/flatiron-school/student-scraper-db-003-unit-1/blob/master/lib/models/student_scraper.rb] as a basis for your scrape.
+
+The scrape can be run via running the rake task scrape_students.
+
+```bash
+rake scrape_students
+```
+
+
+
+## The Student Index and the Student Profile
+
+## Creating New Students
+
+## Updating Students

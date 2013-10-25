@@ -2,12 +2,28 @@
 # least important part of this code base.
 
 # What this file does is provide you (and our test suite), an easy way
-# to trigger migrations to run.
+# to trigger migrations to run along with a scrape_students task.
+
+# The environment task helps other tasks bootstrap the environment.
 task :environment, :env do |cmd, args|
   ENV["RACK_ENV"] ||= (args[:env] || "development")
   require "./config/environment"
 end
- 
+
+# IMPORTANT - READ THIS TASK!
+# This is the method in which you will initiate the scrape
+# of the student site to populate your development database. 
+desc 'Scrape the student site'
+task :scrape_students => :env do
+  # First, load the student scraper, it isn't really part of our environment
+  # only this task needs it.
+  require './lib/student_scraper'
+
+  # Let's instantiate and call. Make sure to read through the StudentScraper class.
+  scraper = StudentScraper.new('http://students.flatironschool.com')
+  scraper.call
+end
+
 namespace :db do
   desc "Run database migrations"
   task :migrate, :env do |cmd, args|
