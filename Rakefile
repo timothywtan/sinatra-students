@@ -1,3 +1,8 @@
+# We need to go over what a Rakefile or Rake task is, but this is the
+# least important part of this code base.
+
+# What this file does is provide you (and our test suite), an easy way
+# to trigger migrations to run.
 task :environment, :env do |cmd, args|
   ENV["RACK_ENV"] ||= (args[:env] || "development")
   require "./config/environment"

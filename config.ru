@@ -1,8 +1,11 @@
+# Make sure our default RACK_ENV is development if it has not been set
+# by the global environment.
 ENV['RACK_ENV'] ||= 'development'
 
+# Load our environment.
 require './config/environment'
 
-# Load Controllers as Middleware
+# A method to quickly mount all our Controllers as Middleware
 def mount_controllers_as_middleware
   Dir.entries('app/controllers').each do |file|
     next if file.start_with?(".") || file == "application_controller.rb"
@@ -13,4 +16,5 @@ def mount_controllers_as_middleware
 end
 mount_controllers_as_middleware
 
+# Mount the main controller as our Rack Application.
 run ApplicationController
