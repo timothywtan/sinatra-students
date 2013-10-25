@@ -196,3 +196,7 @@ Spec this out too.
 # Polish
 
 Go to town, get 100% coverage, add features, maybe FileUploads through a gem that plays nice with Sequel. Make it as realistic as possible.
+
+# Submitting Your Solution
+
+Fork and clone this repository, push up your solution to a `solution` branch.
