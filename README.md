@@ -84,7 +84,7 @@ Start the application with `rackup`.
 
 You need to integrate a scrape class into this project to populate your development database.
 
-We suggest using (StudentScraper)[https://github.com/flatiron-school/student-scraper-db-003-unit-1/blob/master/lib/models/student_scraper.rb] as a basis for your scrape.
+We suggest using [StudentScraper](https://github.com/flatiron-school/student-scraper-db-003-unit-1/blob/master/lib/models/student_scraper.rb) as a basis for your scrape.
 
 The scrape can be run via running the rake task scrape_students.
 
