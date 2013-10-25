@@ -193,6 +193,6 @@ Build an `/students/avi-flombaum/edit` that renders a form with their student da
 
 Spec this out too.
 
-### Polish
+# Polish
 
 Go to town, get 100% coverage, add features, maybe FileUploads through a gem that plays nice with Sequel. Make it as realistic as possible.
