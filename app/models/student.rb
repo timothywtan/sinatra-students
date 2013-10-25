@@ -1,3 +1,3 @@
-class Student
-  attr_accessor :name
+class Student < Sequel::Model
+  
 end

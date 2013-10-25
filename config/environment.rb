@@ -1,7 +1,12 @@
-require 'bundler'  
+# Bundler
 
+require 'bundler'  
 Bundler.require(:default, ENV['RACK_ENV'])
 
+# Setup the database
+DB = Sequel.connect("sqlite://db/students-#{ENV['RACK_ENV']}.db")
+
+# Load our models, concerns, and controllers
 def load_dirs(array)
   array.each do |dir|
     Dir.entries(dir).each do |file|
@@ -12,3 +17,5 @@ def load_dirs(array)
 end
 
 load_dirs(['app/concerns', 'app/models', 'app/controllers'])
+
+
