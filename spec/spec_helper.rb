@@ -43,7 +43,10 @@ RSpec.configure do |config|
   # Add a global before to reset the database on every execution
   # of the test suite.
   config.before do
-    # puts "Reseting the #{ENV['RACK_ENV']} database."
+    Rake::Task['db:reset'].invoke()
+  end
+
+  config.after do
     Rake::Task['db:reset'].invoke()
   end
 end

@@ -5,8 +5,8 @@
 # to trigger migrations to run along with a scrape_students task.
 
 # The environment task helps other tasks bootstrap the environment.
-task :environment, :env do |cmd, args|
-  ENV["RACK_ENV"] ||= (args[:env] || "development")
+task :environment do |cmd, args|
+  ENV["RACK_ENV"] ||= "development"
   require "./config/environment"
 end
 
@@ -14,7 +14,7 @@ end
 # This is the method in which you will initiate the scrape
 # of the student site to populate your development database. 
 desc 'Scrape the student site'
-task :scrape_students, [:env] => [:environment] do
+task :scrape_students => [:environment] do
   # First, load the student scraper, it isn't really part of our environment
   # only this task needs it.
   require './lib/student_scraper'
@@ -26,8 +26,8 @@ end
 
 namespace :db do
   desc "Run database migrations"
-  task :migrate, [:env] => [:environment] do |cmd, args|
-    env = args[:env] || ENV['RACK_ENV'] || "development"
+  task :migrate => [:environment] do |cmd, args|
+    env = ENV['RACK_ENV'] || "development"
     puts "Migrating the #{env} database."
  
     require 'sequel/extensions/migration'
@@ -35,8 +35,8 @@ namespace :db do
   end
  
   desc "Rollback the database"
-  task :rollback, [:env] => [:environment] do |cmd, args|
-    env = args[:env] || ENV['RACK_ENV'] || "development"
+  task :rollback => [:environment] do |cmd, args|
+    env = ENV['RACK_ENV'] || "development"
  
     require 'sequel/extensions/migration'
     version = (row = DB[:schema_info].first) ? row[:version] : nil
@@ -44,8 +44,8 @@ namespace :db do
   end
  
   desc "Nuke the database (drop all tables)"
-  task :nuke, [:env] => [:environment] do |cmd, args|
-    env = args[:env] || ENV['RACK_ENV'] || "development"
+  task :nuke => [:environment] do |cmd, args|
+    env = ENV['RACK_ENV'] || "development"
     puts "Nuking the #{env} database."
 
     DB.tables.each do |table|
@@ -54,5 +54,5 @@ namespace :db do
   end
  
   desc "Reset the database"
-  task :reset, [:env] => [:nuke, :migrate]
+  task :reset => g[:nuke, :migrate]
 end

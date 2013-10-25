@@ -132,8 +132,67 @@ The scrape should force you to construct a pretty solid Student ORM class.
 
 ## The Student Index and the Student Profile
 
+The next step is to get a high fidelity version of the current student site. This include the student index, located at the root of the site, and a student profile (show) page.
 
+You'll have to implement two controller actions in the `StudentsController`. You should write controller specs for these (you'll get a lot of mileage copying the provided ones and modifying as needed).
+
+### Student Index
+
+Iterate over all the students in the Database and display them in the index.erb. For now, don't worry about the frontend that much. What I would do is grab the HTML from the student index and basically comment out all calls to JS/CSS for now, just generate an ugly looking site with the correct HTML that will snap together once you integrate CSS/JS correctly. The student index needs to link, correctly, to each student's profile. The student profiles should be pretty URLs, such as, /students/avi-flombaum
+
+
+### Student Show
+
+An individual student's profile should be accessible `/students/avi-flombaum` and you should be using the student's slug to query for the student.
+
+Implementing the student slug behavior might be non-trivial. First, you definitely need a slug column in the database. Second, you need to figure out away to create those slugs based on the student's name before you first insert them into the database. The `student_spec.rb` suggests a manner, but worse case, modify the `student_scraper` to just do it brute-force and ignore the `slugify!` specs. 
+
+With the frontend, same rules apply, just grab the HTML from the current site and don't worry about the styles.
+
+### Integrating CSS/JS
+
+You can put the javascript and CSS and images from the live site in public and those will be served as the root of your site. For example:
+
+```
+public/stylesheets/style.css
+public/javascripts/site.js
+public/images/student-profile-pic.jpg
+```
+
+You could link to those assets in HTML via:
+
+```html
+<link href='/stylesheets/style.css' media='screen' rel='stylesheet' type='text/css'>
+<script src="/javascripts/site.js" type="text/javascript"></script>
+<img src="/images/student-profile-pic.jpg">
+```
+
+Obviously you might have to fix references to assets within those, but everything lives in public is at the root of the site.
 
 ## Creating New Students
 
+The next step is to now build a form, accessible at `/students/new` that will allow you to create a new student.
+
+The form should submit via a `POST` to `/students`, take the form data, and save it to the database. That student should appear in the student index. Don't worry how the form looks or how functional it is, if you can't get profile_pic to work, get as much data as you can. This will require building two routes in your `StudentsController`.
+
+See if you can write specs for the form. Within the `students_controller_spec.rb`, I'd imagine seeing something like.
+
+```ruby
+context 'creating a student' do
+  it 'accepts the form data and creates a student with those attributes' do
+    # The `post` Rack::Test method takes a second argument of a POST data hash.    
+    post '/students', {:name => "Avi Flombaum"}
+    expect(Student.find_by(:name => "Avi Flombaum")).to be_a(Student)
+  end
+end
+```
+
 ## Updating Students
+
+Build an `/students/avi-flombaum/edit` that renders a form with their student data pre-filled in. You should be submitting that form to the update action at `POST /students/avi-flombaum`.
+
+Spec this out too.
+
+### Polish
+
+Go to town, get 100% coverage, add features, maybe FileUploads through a gem that plays nice with Sequel. Make it as realistic as possible.
