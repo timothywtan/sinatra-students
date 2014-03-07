@@ -1,7 +1,4 @@
-# Originally from: 
-# https://github.com/flatiron-school/student-scraper-db-003-unit-1/blob/master/lib/models/student_scraper.rb
-
-require 'nokogiri'
+# This may or may not work. Feel free to replace with your own.
 require 'open-uri'
 
 class StudentScraper
@@ -37,7 +34,7 @@ class StudentScraper
 
   def parse_social_media(student_page)
     student_page.css('div.social-icons a').collect do |link|
-        link.attr('href')
+      link.attr('href')
     end
   end
 
@@ -72,7 +69,7 @@ class StudentScraper
       
       # This is using the find_or_create method defined by Sequel
       # http://sequel.rubyforge.org/rdoc/classes/Sequel/Model/ClassMethods.html#method-i-find_or_create
-      student = Student.find_or_create(:name => name)
+      student = Student.find_or_create_by(:name => name)
 
       student.profile_image = parse_profile_image(student_page)
       student.background_image = parse_background_image(student_page)

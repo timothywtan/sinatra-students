@@ -2,21 +2,23 @@
 source 'https://rubygems.org'
 
 gem 'sinatra'
-gem 'sinatra-contrib'
-gem 'sequel'
+gem 'shotgun'
+gem 'tux'
+gem 'activerecord', :require => 'active_record'
+gem 'sinatra-activerecord', :require => 'sinatra/activerecord'
+gem 'require_all'
+gem 'rake'
 gem 'sqlite3'
 gem 'nokogiri'
+gem 'thin'
+gem 'pry'
 
-# Gems to be used only in specific environments.
-group :development, :test do
-  gem 'pry'
-end
+gem 'json'
+gem 'guard-rspec'
+gem 'simplecov'
+gem 'rspec'
+gem 'capybara'
+gem 'terminal-notifier-guard'
+gem 'database_cleaner', git: 'https://github.com/bmabey/database_cleaner.git'
+gem 'rack-test'
 
-# Gems to only be used in the test environment.
-group :test do
-  gem 'json'
-  gem 'guard-rspec'
-  gem 'simplecov'
-  gem 'rspec'
-  gem 'terminal-notifier-guard'
-end

@@ -14,8 +14,8 @@ describe Student do
 
       it 'saves the slug to the database on create' do
         # You will need to read this and learn about model hooks.
-        # http://sequel.rubyforge.org/rdoc/files/doc/model_hooks_rdoc.html
-
+        # http://api.rubyonrails.org/classes/ActiveRecord/Callbacks.html
+        # http://edgeguides.rubyonrails.org/active_record_callbacks.html
         subject.name = "Avi Flombaum"
         subject.save
 
