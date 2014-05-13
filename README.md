@@ -1,6 +1,7 @@
 ---
 tags: student-project, sinatra, activerecord, rspec
 language: ruby
+  resources: 3
 ---
 
 # Sinatra Students
@@ -194,3 +195,8 @@ We recently repackaged this lab to work with ActiveRecord and not Sequel. You mi
 # Submitting Your Solution
 
 Fork and clone this repository, push up your solution to a `solution` branch.
+
+## Resources
+* [Screencasts](http://screencasts.org/) - [Using ActiveRecord with Sinatra](http://screencasts.org/episodes/activerecord-with-sinatra)
+* [Screencasts](http://screencasts.org/) - [Configuring ActiveRecord in Sinatra](http://screencasts.org/episodes/configuring-activerecord-in-sinatra)
+* [Sinatra Up and Running](http://books.flatironschool.com/books/101) - [Chapter 2 Fundamentals](http://books.flatironschool.com/books/101), page 29
