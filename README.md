@@ -1,6 +1,6 @@
 ---
-tags: student-project, sinatra, activerecord, rspec
-language: ruby
+  tags: student-project, sinatra, activerecord, rspec
+  language: ruby
   resources: 3
 ---
 
