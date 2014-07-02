@@ -48,7 +48,7 @@ Guardfile
 Rakefile
 ```
 
-It's important the before you start the project, each of you read the codebase as it currently stands. Every file we've given you has comments in it explaining how it works.
+It's important that before you start the project, each of you read the codebase as it currently stands. Every file we've given you has comments in it explaining how it works.
 
 ## Bundle
 
@@ -71,10 +71,6 @@ The application is setup to use `guard` to auto-run the test suite on most file 
 guard
 ```
 
-## Running Migrations
-
-Migrations are a mechanism for creating our schema through code rather then sequel. To trigger the migration files to run, we use a rake task, defined in the `Rakefile`, `rake db:migrate`. That will apply all unapplied, or unrun, migrations to the database. There are other tasks but don't worry about them.
-
 ## Racking Up the Application
 
 Start the application with `shotgun` or `rackup`.
@@ -85,7 +81,7 @@ Start the application with `shotgun` or `rackup`.
 
 You need to integrate a scrape class into this project to populate your development database.
 
-We suggest using [StudentScraper] that's included as a basis for your scrape. Read it all.
+Use the [StudentScraper] that's included as a basis for your scrape. It is located in `lib/student_scraper.rb`. Read it all.
 
 The scrape can be run via running the rake task scrape_students.
 
@@ -97,7 +93,7 @@ Try running the scrape immediately (assuming you first followed the instructions
 
 You will need to add migrations to create the columns/attributes needed for the scrape class to correctly populate a student's data.
 
-So for instance, the first error you'll see is:
+So for instance, the first error you'll see if you run the strape before migrating:
 
 ```bash
 rake scrape_students
@@ -113,7 +109,7 @@ Now re-run the `rake scrape_students` task and you should get more errors about 
 
 Go into the `lib/student_scraper.rb` and find all the missing attributes. Try to build a migration `03_add_student_attributes.rb` that gets all the attributes you'll need to add. If you miss a few and you've already run the migrations, you can always `rake db:reset` to start fresh.
 
-Feel free to write tests to make sure that the student has those attributes but as they are provided by Sequel, they are already tested. We only test code we write (like the future `Student#slug` method).
+Feel free to write tests to make sure that the student has those attributes but as they are provided by ActiveRecord, they are already tested. We only test code we write (like the future `Student#slug` method).
 
 When you are done, you should be able to `open db/development.sqlite3` and see a populated students table.
 
@@ -184,17 +180,9 @@ Spec this out too.
 
 # Polish
 
-Go to town, get 100% coverage, add features, maybe FileUploads through a gem that plays nice with Sequel. Make it as realistic as possible.
-
-# Notes
-
-We recently repackaged this lab to work with ActiveRecord and not Sequel. You might get some errors.
+Go to town, get 100% coverage, add features, maybe FileUploads through a gem that plays nice with ActiveRecord. Make it as realistic as possible.
 
 *We highly recommend you read the entire codebase first.*
-
-# Submitting Your Solution
-
-Fork and clone this repository, push up your solution to a `solution` branch.
 
 ## Resources
 * [Screencasts](http://screencasts.org/) - [Using ActiveRecord with Sinatra](http://screencasts.org/episodes/activerecord-with-sinatra)
