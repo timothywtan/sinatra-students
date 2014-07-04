@@ -1,3 +1,11 @@
+List of all does students
+<ul>
+
+
 <% @students.each do |s| %>
-  <p><%= s.name %></p>
+<li><a href="/students/<%=s.slug%>" ><%=s.name%> </a></li>
 <% end %>
+</ul>
+
+
+<a href="/student/new">new student</a>
